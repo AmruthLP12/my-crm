@@ -25,6 +25,7 @@ export default async function UpdateUserPage({
     id: user._id as string,
     name: user.name as string,
     email: user.email as string,
+    role : user.role as string,
   });
 
   return (

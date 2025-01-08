@@ -1,7 +1,6 @@
-import { NextResponse } from "next/server";
 import { auth } from "@/auth";
-import User from "@/app/models/User";
-import { updateUser, deleteUser } from "../../../../actions/authActions";
+import { NextResponse } from "next/server";
+import { deleteUser, updateUser } from "../../../../actions/authActions";
 
 export async function PUT(
   request: Request,
@@ -13,8 +12,8 @@ export async function PUT(
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const { name, email } = await request.json();
-  const result = await updateUser(params.id, { name, email });
+  const { name, email, role } = await request.json(); 
+  const result = await updateUser(params.id, { name, email , role});
 
   if (result.success) {
     return NextResponse.json({ message: "User updated successfully" });

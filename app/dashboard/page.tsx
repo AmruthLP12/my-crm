@@ -11,6 +11,7 @@ export default async function Dashboard() {
   }
 
   const users = await getAllUsers()
+  console.log(users)
 
   return (
     <div className="container mx-auto py-10">

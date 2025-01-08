@@ -3,15 +3,16 @@
 import { signUp } from "@/actions/authActions";
 import { Button } from "@/components/ui/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState } from "react";
 
@@ -56,6 +57,10 @@ export default function SignUp() {
             )}
           </CardFooter>
         </form>
+        <Link href="/auth/login" className="mb-4 flex items-center justify-center">
+          Already have an account?{" "}
+          <span className="underline text-blue-500">Login</span>
+        </Link>
       </Card>
     </div>
   );

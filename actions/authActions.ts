@@ -76,11 +76,12 @@ export async function getAllUsers() {
   }
 
   try {
-    const users = await User.find({}, "name email").lean();
+    const users = await User.find({}, "name email role").lean();
     return users.map((user) => ({
       id: user._id as string,
       name: user.name,
       email: user.email,
+      role: user.role,
     }));
   } catch (error) {
     console.error("Failed to fetch users:", error);
@@ -90,11 +91,8 @@ export async function getAllUsers() {
 
 export async function updateUser(
   userId: string,
-  userData: { name: string; email: string }
-  
+  userData: { name: string; email: string; role: string }
 ) {
-
-  console.log(userData);
   const session = await auth();
 
   if (!session?.user) {

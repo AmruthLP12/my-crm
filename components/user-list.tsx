@@ -28,9 +28,12 @@ type User = {
   id: string
   name: string
   email: string
+  role: string
 }
 
 export function UserList({ initialUsers }: { initialUsers: User[] }) {
+
+  console.log(initialUsers)
   const [users, setUsers] = useState(initialUsers)
   const router = useRouter()
 
@@ -55,6 +58,7 @@ export function UserList({ initialUsers }: { initialUsers: User[] }) {
             <TableHead>ID</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
+            <TableHead>Role</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -64,6 +68,7 @@ export function UserList({ initialUsers }: { initialUsers: User[] }) {
               <TableCell>{user.id}</TableCell>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
+              <TableCell>{user.role}</TableCell>
               <TableCell>
                 <div className="flex space-x-2">
                   <Link href={`/dashboard/users/${user.id}`}>
